@@ -1,0 +1,42 @@
+<!-- index.html - Página de login e registo -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Servidor de E-mail</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Nome de utilizador" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+    <h2>Registo</h2>
+    <form id="signupForm">
+        <input type="text" id="newUsername" placeholder="Nome de utilizador" required>
+        <input type="email" id="email" placeholder="E-mail" required>
+        <input type="password" id="newPassword" placeholder="Senha" required>
+        <button type="submit">Registar</button>
+    </form>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            fetch("/login", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({username, password})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    window.location.href = "/dashboard";
+                } else {
+                    alert("Login falhou");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
