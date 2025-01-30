@@ -75,6 +75,6 @@ Aqui está o início do servidor de e-mail em Flask. Ele inclui:
 - Um endpoint `/signup` para registo de utilizadores com validação de e-mail.
 
 Próximos passos:
-1. Criar as páginas HTML para a interface web do e-mail.
-2. Adicionar funcionalidades de envio e receção de e-mails.
-3. Implementar autenticação de utilizadores.
+- index.html – Página inicial com login e registo.
+- dashboard.html – Interface principal com caixa de entrada, opções de e-mail.
+- compose.html – Página para compor e enviar e-mails.
