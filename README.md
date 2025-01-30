@@ -45,12 +45,36 @@ Este exemplo fornece um endpoint básico de registo com validação de senha for
 
 4. **Estrutura `if __name__ == "__main__"`**:
    - Garante que o script só seja executado se chamado diretamente, prevenindo a execução automática ao ser importado como módulo.
-
 ---
-
 ### Testes de Exemplos
 
 - **Entrada**: `teste@exemplo.com`
   - **Saída**: O e-mail é válido.
 - **Entrada**: `email_incorreto@exemplo`
   - **Saída**: O e-mail é inválido.
+---
+### Estrutura do Servidor de E-mail:
+1. **Servidor Flask**  
+   - Incluirá uma janela gráfica com botões para "Ligar Servidor", "Desligar" e "Sair".
+   - Servirá páginas web para interação com os e-mails.
+
+2. **Funcionalidades da Página Web:**  
+   - Caixa de entrada, rascunhos, enviados, spam, lixeira.
+   - Possibilidade de mover, arquivar, apagar e-mails.
+   - Composição e envio de novos e-mails.
+   - Validação de contas via link.
+   - Anexos para e-mails.
+
+3. **Autenticação e Registo:**  
+   - Integração do sistema de registo e validação de e-mails.
+   - Base de dados para armazenar utilizadores e e-mails.
+
+Aqui está o início do servidor de e-mail em Flask. Ele inclui:
+- Uma interface gráfica para iniciar e desligar o servidor.
+- Um banco de dados SQLite para armazenar utilizadores e e-mails.
+- Um endpoint `/signup` para registo de utilizadores com validação de e-mail.
+
+Próximos passos:
+1. Criar as páginas HTML para a interface web do e-mail.
+2. Adicionar funcionalidades de envio e receção de e-mails.
+3. Implementar autenticação de utilizadores.
