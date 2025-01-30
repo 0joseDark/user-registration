@@ -1,4 +1,4 @@
-# user registration and server of e-mail
+# user registration and e-mail server
 - registo e-mail e de utilizadores
 ### 1. Instalar o Flask:
 ```sh
