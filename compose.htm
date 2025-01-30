@@ -1,0 +1,39 @@
+<!-- compose.html - Página para escrever e enviar e-mails -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compor E-mail</title>
+</head>
+<body>
+    <h2>Escrever Novo E-mail</h2>
+    <form id="composeForm">
+        <input type="email" id="receiver" placeholder="Para" required>
+        <input type="text" id="subject" placeholder="Assunto" required>
+        <textarea id="body" placeholder="Escreva sua mensagem aqui..." required></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+    <button onclick="window.location.href='/dashboard'">Voltar</button>
+    <script>
+        document.getElementById("composeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const receiver = document.getElementById("receiver").value;
+            const subject = document.getElementById("subject").value;
+            const body = document.getElementById("body").value;
+            fetch("/send_email", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({receiver, subject, body})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert("E-mail enviado com sucesso!");
+                    window.location.href = "/dashboard";
+                } else {
+                    alert("Erro ao enviar e-mail");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
