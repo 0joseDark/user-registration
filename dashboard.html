@@ -1,0 +1,33 @@
+<!-- dashboard.html - Página principal com caixa de entrada -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Caixa de Entrada</title>
+</head>
+<body>
+    <h2>Bem-vindo ao seu e-mail</h2>
+    <button onclick="window.location.href='/compose'">Escrever E-mail</button>
+    <button onclick="logout()">Sair</button>
+    <h3>Caixa de Entrada</h3>
+    <ul id="emailList"></ul>
+    <script>
+        function loadEmails() {
+            fetch("/inbox")
+            .then(response => response.json())
+            .then(emails => {
+                let emailList = document.getElementById("emailList");
+                emailList.innerHTML = "";
+                emails.forEach(email => {
+                    let li = document.createElement("li");
+                    li.textContent = `${email[1]}: ${email[3]}`;
+                    emailList.appendChild(li);
+                });
+            });
+        }
+        function logout() {
+            fetch("/logout").then(() => window.location.href = "/");
+        }
+        loadEmails();
+    </script>
+</body>
+</html>
